@@ -12,16 +12,33 @@ public abstract class Evento {
 	private int numEntradasVendidas;
 	private int capMax;
 	EstadoEvento estado;
+	private int contador=1;
 	
 	
-	public Evento(int id, String nombre, LocalDate fecha, int numEntradasVendidas, int capMax, EstadoEvento estado) throws CraftersException {
+	public Evento(int numEntradasVendidas, int capMax, EstadoEvento estado) throws CraftersException {
 		super();
-		this.id = id;
+		this.id = contador;
 		this.nombre = nombre;
 		this.fecha = fecha;
 		this.numEntradasVendidas = numEntradasVendidas;
 		this.capMax = capMax;
 		this.estado = estado;
+		this.contador=contador++;
+		
+		if(capMax <=0 || numEntradasVendidas <=0 || numEntradasVendidas > capMax) {
+			throw new CraftersException();
+		}
+	}
+	
+	public Evento(int numEntradasVendidas, int capMax) throws CraftersException {
+		super();
+		this.id = contador;
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.numEntradasVendidas = numEntradasVendidas;
+		this.capMax = capMax;
+		this.estado = estado;
+		this.contador=contador++;
 		
 		if(capMax <=0 || numEntradasVendidas <=0 || numEntradasVendidas > capMax) {
 			throw new CraftersException();
