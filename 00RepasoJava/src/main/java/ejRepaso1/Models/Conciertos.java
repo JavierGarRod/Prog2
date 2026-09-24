@@ -1,9 +1,9 @@
-package models;
+package ejRepaso1.Models;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import exceptions.CraftersException;
+import ejRepaso1.Exceptions.CraftersException;
 
 public class Conciertos extends Evento{
 
@@ -26,7 +26,7 @@ public class Conciertos extends Evento{
 		super(numEntradasVendidas, capMax);
 	}
 
-	
+
 	public String getArtistaPrincipal() {
 		return artistaPrincipal;
 	}

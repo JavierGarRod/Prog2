@@ -1,16 +1,16 @@
-package models;
+package ejRepaso1.Models;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-import exceptions.CraftersException;
+import ejRepaso1.Exceptions.CraftersException;
 
 public abstract class Evento {
 	private int id;
 	private String nombre;
 	LocalDate fecha;
 	private int numEntradasVendidas;
-	private int capMax;
+	private int capMax;  
 	EstadoEvento estado;
 	private int contador=1;
 	
@@ -26,7 +26,7 @@ public abstract class Evento {
 		this.contador=contador++;
 		
 		if(capMax <=0 || numEntradasVendidas <=0 || numEntradasVendidas > capMax) {
-			throw new CraftersException();
+			throw new CraftersException("mmmm");
 		}
 	}
 	
@@ -41,7 +41,7 @@ public abstract class Evento {
 		this.contador=contador++;
 		
 		if(capMax <=0 || numEntradasVendidas <=0 || numEntradasVendidas > capMax) {
-			throw new CraftersException();
+			throw new CraftersException("mmmm");
 		}
 	}
 
@@ -121,8 +121,8 @@ public abstract class Evento {
 	
 	public void modificaEstado(EstadoEvento estadoNuevo) throws CraftersException{
 		if(estado.equals(EstadoEvento.PENDIENTE) && estadoNuevo.equals(EstadoEvento.APLAZADO)) {
-			System.out.println("No es posible pasar al estado: " + estadoNuevo);
-			throw new CraftersException();
+
+			throw new CraftersException("No es posible pasar al estado: " + estadoNuevo);
 		}
 		else if(estadoNuevo.equals(EstadoEvento.APLAZADO) && estadoNuevo.equals(EstadoEvento.PROGRAMADO)) {
 			estado.equals(estadoNuevo);

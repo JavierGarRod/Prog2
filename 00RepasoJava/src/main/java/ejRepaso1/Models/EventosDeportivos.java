@@ -1,8 +1,8 @@
-package models;
+package ejRepaso1.Models;
 
 import java.time.LocalDate;
 
-import exceptions.CraftersException;
+import ejRepaso1.Exceptions.CraftersException;
 
 public class EventosDeportivos extends Evento{
 	private boolean sonTelevisados;
