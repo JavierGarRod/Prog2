@@ -9,35 +9,32 @@ public class Ej1 {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
-        System.out.print("Introduce la ruta del directorio: ");
+        System.out.print("Introduce la ruta del directorio (Sin comillas): ");
         String ruta = teclado.nextLine();
 
         try {
             File directorio = new File(ruta);
 
-            // Comprobar si la ruta existe
-            if (!directorio.exists() || !directorio.isDirectory()) {
+            if (!directorio.exists()) { // Comprobar si la ruta existe
                 throw new RutaNoValidaException("La ruta no existe.");
             }
-
-            // Comprobar si es un directorio
-            if (!directorio.isDirectory()) {
+            else if (!directorio.isDirectory()) { // Comprobar si es un directorio
                 throw new RutaNoValidaException("La ruta indicada no es un directorio.");
             }
 
             // Obtener los elementos del directorio
             File[] elementos = directorio.listFiles();
 
-            // listFiles() puede devolver null si no hay permisos
-            if (elementos == null) {
+            
+            if (elementos == null) { // listFiles() puede devolver null si no hay permisos
                 throw new RutaNoValidaException("No se puede acceder al contenido del directorio. ");
             }
 
+            
             int totalFicheros = 0;
             int totalDirectorios = 0;
 
-            // Recorrer los elementos del directorio
-            for (File elemento : elementos) {
+            for (File elemento : elementos) { // Recorrer los elementos del directorio
 
                 if (elemento.isFile()) {
                     System.out.println("[F] " + elemento.getName());
@@ -49,7 +46,6 @@ public class Ej1 {
                 }
             }
 
-            // Mostrar totales
             System.out.println("Total de ficheros: " + totalFicheros);
             System.out.println("Total de directorios: " + totalDirectorios);
 
