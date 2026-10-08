@@ -1,4 +1,4 @@
-package Ficheros.Boletin1.Ej5.Models;
+package Ficheros.Boletin1.Ej5;
 
 import java.io.File;
 import java.util.Scanner;

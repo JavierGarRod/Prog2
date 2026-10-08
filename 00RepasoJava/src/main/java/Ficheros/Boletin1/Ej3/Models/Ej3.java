@@ -18,8 +18,7 @@ public class Ej3 {
         if (directorio.mkdir()) {
             logger.info("Directorio creado correctamente: " + directorio.getAbsolutePath());
         } else {
-            logger.warning("Error al crear el directorio o ya existe: "
-                    + directorio.getAbsolutePath());
+            logger.warning("Error al crear el directorio o ya existe: " + directorio.getAbsolutePath());
         }
 
         // 2. Crear los dos ficheros vacíos
