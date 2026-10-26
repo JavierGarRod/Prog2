@@ -14,7 +14,12 @@ public class ContadorPalabras {
 	
 	public static void main(String[] args) {
 		ContadorPalabras ref=new ContadorPalabras();
-		ref.cuentaPalabraContenidoFichero(null, null);
+		try {
+			ref.cuentaPalabraContenidoFichero(args[0], args[1]);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public int  cuentaPalabraContenidoFichero(String rutaYNombre, String palabra) throws FileNotFoundException{
