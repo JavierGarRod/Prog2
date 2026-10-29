@@ -12,7 +12,7 @@ public class LanzadorAnalisisTemperaturas {
     				String.valueOf(i), rutaFichero
     		);
         	
-        	System.out.println("Resultado guardado en " + umbral + ".txt");
+        	System.out.println("Resultado guardado en " + umbral[i] + ".txt");
     		pb1.start();
         }
 	}

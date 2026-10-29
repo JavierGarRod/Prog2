@@ -30,7 +30,8 @@ public class AnalizadorTemperaturas {
             while (in.hasNextDouble()) {
                 double temperatura = in.nextDouble();
                 for(int i=0;i<umbral.length;i++) {
-                	if (temperatura >= i) {
+                	contador=0;
+                	if (temperatura >= umbral[i]) {
                         contador++;
                     }
                 }
@@ -39,8 +40,8 @@ public class AnalizadorTemperaturas {
         
         for(int i=0;i<umbral.length;i++) {
         	// Crear el nombre del fichero de salida
-            String nombreSalida = i % 1 == 0
-                    ? String.valueOf((int) i)
+            String nombreSalida = umbral[i] % 1 == 0
+                    ? String.valueOf(umbral[i])
                     : String.valueOf(umbral);
 
             // Escribir el resultado en un fichero llamado umbral.txt
@@ -50,7 +51,7 @@ public class AnalizadorTemperaturas {
                 bw.write(String.valueOf(contador));
             }
 
-            System.out.println("Temperaturas iguales o superiores a " + umbral + ": " + contador);
+            System.out.println("Temperaturas iguales o superiores a " + umbral[i] + ": " + contador);
         }
         
     }
