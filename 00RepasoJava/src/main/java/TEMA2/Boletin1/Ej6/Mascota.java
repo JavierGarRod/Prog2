@@ -32,9 +32,9 @@ public class Mascota implements Runnable {
 
         // 3. Duerme el hilo 1 segundo * número de veces que ha comido
         try {
-            Thread.sleep(1000L * vecesComido);
+            Thread.sleep(1000 * vecesComido);
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        	e.printStackTrace();
         }
 
         // 4. Imprime que ha terminado de comer

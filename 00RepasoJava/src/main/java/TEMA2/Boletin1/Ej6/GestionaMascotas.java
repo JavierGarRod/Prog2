@@ -19,7 +19,7 @@ public class GestionaMascotas {
             try {
                 cuidadores[i].join();
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+            	e.printStackTrace();
             }
         }
 
