@@ -14,7 +14,6 @@ public class GestionaMascotas {
         }
 
         // El hilo principal espera a que TODOS los cuidadores terminen.
-        // Sin join(), main imprimiría el valor antes de que acaben los hilos.
         for (int i = 0; i < NUM_CUIDADORES; i++) {
             try {
                 cuidadores[i].join();
