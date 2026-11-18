@@ -1,0 +1,28 @@
+EJERCICIO 6 - SINCRONIZACION
+
+El ejercicio 6 consiste en modificar los métodos de los ejercicios anteriores:
+
+1) Ejercicio 3, archivo Multiplos.java:
+   Cambia:
+       public void imprimeMultiplos() {
+   Por:
+       public synchronized void imprimeMultiplos() {
+
+2) Ejercicio 4, archivo MultiplosCooperativos.java:
+   Cambia:
+       public void imprimeMultiplos(int numero) {
+   Por:
+       public synchronized void imprimeMultiplos(int numero) {
+
+3) Ejercicio 5, archivo MultiplosCooperativosEstaticos.java:
+   Cambia:
+       public static void imprimeMultiplos(int numero) {
+   Por:
+       public static synchronized void imprimeMultiplos(int numero) {
+
+Después ejecuta cada gestor y compara el comportamiento y el tiempo.
+
+IMPORTANTE:
+- En el ejercicio 3 cada hilo tiene un objeto distinto: los bloqueos son independientes.
+- En el ejercicio 4 los tres hilos comparten el mismo objeto: se ejecuta un método a la vez.
+- En el ejercicio 5 el método estático sincronizado utiliza el bloqueo de la clase.
