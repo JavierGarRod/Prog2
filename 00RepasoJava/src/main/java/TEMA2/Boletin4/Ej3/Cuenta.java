@@ -1,28 +1,34 @@
 package TEMA2.Boletin4.Ej3;
 
-public class Cuenta implements Runnable{
-	private Double saldo;
+public class Cuenta {
 
-	public Double retirarDinero(Double dineroRetirar) {
-		if(dineroRetirar>=saldo) {
-			saldo=saldo-dineroRetirar;
-		} else {
-			//exception
-		}
-		
-		return saldo;
-	}
-	
-	public Double ingresarDinero(Double dineroIngresar) {
-		saldo=saldo+dineroIngresar;
-		
-		return saldo;
-		
-	}
+    private double saldo;
 
-	@Override
-	public void run() {
-		System.out.println("Saldo en la cuenta: "+saldo);
-		
-	}
+    public Cuenta(double saldoInicial) {
+        this.saldo = saldoInicial;
+    }
+
+    public synchronized void ingresarDinero(double cantidad) {
+        saldo += cantidad;
+        System.out.println(Thread.currentThread().getName()
+                + " ingresa " + cantidad
+                + " €. Saldo actual: " + saldo + " €");
+    }
+
+    public synchronized void retirarDinero(double cantidad) {
+        if (saldo >= cantidad) {
+            saldo -= cantidad;
+            System.out.println(Thread.currentThread().getName()
+                    + " retira " + cantidad
+                    + " €. Saldo actual: " + saldo + " €");
+        } else {
+            System.out.println(Thread.currentThread().getName()
+                    + " no puede retirar " + cantidad
+                    + " €. Saldo insuficiente: " + saldo + " €");
+        }
+    }
+
+    public synchronized double getSaldo() {
+        return saldo;
+    }
 }
