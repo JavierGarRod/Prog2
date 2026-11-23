@@ -5,11 +5,13 @@ import java.util.Random;
 public class CalculaMaximoSecuencia {
 
     public static void main(String[] args) {
+    	CalculaMaximoSecuencia ref=new CalculaMaximoSecuencia();
+    	
         long inicioTiempo = System.currentTimeMillis();
 
         int tamTabla = 10000;
-        int[] tabla = construyeTablaNotas(tamTabla);
-        int maximo = calculaMax(tabla);
+        int[] tabla = ref.construyeTablaNotas(tamTabla);
+        int maximo = ref.calculaMax(tabla);
 
         System.out.println("Máximo encontrado: " + maximo);
 
@@ -17,7 +19,7 @@ public class CalculaMaximoSecuencia {
         System.out.println("Tiempo total: " + (finTiempo - inicioTiempo) + " ms");
     }
 
-    private static int calculaMax(int[] tabla) {
+    private int calculaMax(int[] tabla) {
         int maximo = tabla[0];
         for (int i = 0; i < tabla.length; i++) {
             if (tabla[i] > maximo) maximo = tabla[i];
@@ -25,7 +27,7 @@ public class CalculaMaximoSecuencia {
         return maximo;
     }
 
-    private static int[] construyeTablaNotas(int tamanyo) {
+    private int[] construyeTablaNotas(int tamanyo) {
         int[] tabla = new int[tamanyo];
         Random random = new Random();
         for (int i = 0; i < tabla.length; i++) {

@@ -7,11 +7,13 @@ import java.util.Random;
 public class GestionaCalculaMaxHilo {
 
     public static void main(String[] args) {
+    	GestionaCalculaMaxHilo ref=new GestionaCalculaMaxHilo();
+    	
         int tamTabla = 10000;
         int numHilos = 10;
         long inicioTiempo = System.currentTimeMillis();
 
-        int[] tabla = construyeTablaNotas(tamTabla);
+        int[] tabla = ref.construyeTablaNotas(tamTabla);
         List<Thread> hilos = new ArrayList<>();
         List<CalculaMaxHilo> objetos = new ArrayList<>();
 
@@ -46,7 +48,7 @@ public class GestionaCalculaMaxHilo {
         System.out.println("Tiempo total: " + (finTiempo - inicioTiempo) + " ms");
     }
 
-    private static int[] construyeTablaNotas(int tamanyo) {
+    private int[] construyeTablaNotas(int tamanyo) {
         int[] tabla = new int[tamanyo];
         Random random = new Random();
         for (int i = 0; i < tabla.length; i++) {
