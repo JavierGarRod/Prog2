@@ -4,22 +4,26 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-public class Ejercicio2 {
+public class Ej2 {
 
     private static int contador = 0;
 
     // Método sincronizado que comprueba si la palabra aparece en el fichero
-    public static synchronized boolean buscaPalabra(File archivo, String palabra) {
-        try {
+    public synchronized boolean buscaPalabra(File archivo, String palabra) {
+        /*
+    	try {
             String contenido = Files.readString(archivo.toPath());
             return contenido.toLowerCase().contains(palabra.toLowerCase());
         } catch (IOException e) {
             System.out.println("Error leyendo " + archivo.getName() + ": " + e.getMessage());
             return false;
         }
+        */
+    	return false;
     }
 
     public static void main(String[] args) {
+    	Ej2 ref=new Ej2();
         String directorio = "C:/Textos"; // Cambia esta ruta por la de tu carpeta
         String palabra = "Java";
 
@@ -36,8 +40,8 @@ public class Ejercicio2 {
                 if (archivo.isFile() && archivo.getName().toLowerCase().endsWith(".txt")) {
                     System.out.println("Buscando en: " + archivo.getName());
 
-                    if (buscaPalabra(archivo, palabra)) {
-                        synchronized (Ejercicio2.class) {
+                    if (ref.buscaPalabra(archivo, palabra)) {
+                        synchronized (Ej2.class) {
                             contador++;
                         }
                         System.out.println("La palabra aparece en " + archivo.getName());

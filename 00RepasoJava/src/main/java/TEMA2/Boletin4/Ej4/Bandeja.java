@@ -1,40 +1,42 @@
 package TEMA2.Boletin4.Ej4;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Bandeja {
 
-    private Queue<Integer> platos = new LinkedList<>();
-    private final int capacidad = 3;
+    private int capacidad;
+    List<String> bandejaPlatos;
+    private int numPlatos;
 
-    public synchronized void ponerPlato(int numero) throws InterruptedException {
-        while (platos.size() == capacidad) {
-            System.out.println("Bandeja llena. El cocinero espera...");
+    public Bandeja() {
+        this.capacidad = 3;
+        this.bandejaPlatos = new ArrayList<String>();
+        this.numPlatos=1;
+    }
+
+    public synchronized void pongoPlato(String plato) throws InterruptedException {
+
+        while (bandejaPlatos.size() == capacidad) {
+            System.out.println("Bandeja de platos llena");
             wait();
         }
 
-        platos.add(numero);
-        System.out.println(Thread.currentThread().getName()
-                + " deja el plato " + numero
-                + ". Platos en bandeja: " + platos.size());
-
+        System.out.println("Añade " + plato+""+this.numPlatos + " a bandeja");
+        this.bandejaPlatos.add(plato);
+        this.numPlatos++;
         notifyAll();
     }
 
-    public synchronized int retirarPlato() throws InterruptedException {
-        while (platos.isEmpty()) {
-            System.out.println(Thread.currentThread().getName()
-                    + " espera porque la bandeja está vacía...");
+    public synchronized void quitoPlato() throws InterruptedException {
+
+        while (this.bandejaPlatos.isEmpty()) {
+            System.out.println("Bandeja de platos vacía");
             wait();
         }
 
-        int plato = platos.poll();
-        System.out.println(Thread.currentThread().getName()
-                + " retira el plato " + plato
-                + ". Platos en bandeja: " + platos.size());
-
+        System.out.println("Quita plato a bandeja: ");
+        this.bandejaPlatos.remove(0);
         notifyAll();
-        return plato;
     }
 }

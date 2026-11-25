@@ -3,31 +3,27 @@ package TEMA2.Boletin4.Ej4;
 public class Comensal implements Runnable {
 
     private Bandeja bandeja;
+    private String nombre;
 
-    public Comensal(Bandeja bandeja) {
+    public Comensal(String nombre, Bandeja bandeja) {
+        this.nombre = nombre;
         this.bandeja = bandeja;
     }
 
     @Override
     public void run() {
-        for (int i = 1; i <= 4; i++) {
-            try {
-                int plato = bandeja.retirarPlato();
+        System.out.println(this.nombre + " ha empezado a comer.");
+        try {
 
-                System.out.println(Thread.currentThread().getName()
-                        + " está comiendo el plato " + plato);
-
-                Thread.sleep(3000);
-
-                System.out.println(Thread.currentThread().getName()
-                        + " ha terminado de comer el plato " + plato);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                return;
+            for (int i = 0; i < 3; i++) {
+                bandeja.quitoPlato();
+                System.out.println(this.nombre + " coge un plato");
+                System.out.println(this.nombre + " ha empezado a comer");
+                Thread.currentThread().sleep(20000);
             }
-        }
 
-        System.out.println(Thread.currentThread().getName()
-                + " ha terminado de comer.");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

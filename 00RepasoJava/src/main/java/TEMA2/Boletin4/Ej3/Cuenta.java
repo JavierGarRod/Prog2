@@ -10,21 +10,15 @@ public class Cuenta {
 
     public synchronized void ingresarDinero(double cantidad) {
         saldo += cantidad;
-        System.out.println(Thread.currentThread().getName()
-                + " ingresa " + cantidad
-                + " €. Saldo actual: " + saldo + " €");
+        System.out.println(Thread.currentThread().getName() + " ingresa " + cantidad + " €. Saldo actual: " + saldo + " €");
     }
 
     public synchronized void retirarDinero(double cantidad) {
         if (saldo >= cantidad) {
             saldo -= cantidad;
-            System.out.println(Thread.currentThread().getName()
-                    + " retira " + cantidad
-                    + " €. Saldo actual: " + saldo + " €");
+            System.out.println(Thread.currentThread().getName() + " retira " + cantidad + " €. Saldo actual: " + saldo + " €");
         } else {
-            System.out.println(Thread.currentThread().getName()
-                    + " no puede retirar " + cantidad
-                    + " €. Saldo insuficiente: " + saldo + " €");
+            System.out.println(Thread.currentThread().getName() + " no puede retirar " + cantidad + " €. Saldo insuficiente: " + saldo + " €");
         }
     }
 

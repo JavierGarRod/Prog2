@@ -21,7 +21,6 @@ public class Retirador extends Thread {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                return;
             }
         }
     }

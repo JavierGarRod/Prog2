@@ -3,24 +3,26 @@ package TEMA2.Boletin4.Ej4;
 public class Cocinero implements Runnable {
 
     private Bandeja bandeja;
+    private String nombre;
 
-    public Cocinero(Bandeja bandeja) {
+    public Cocinero(Bandeja bandeja, String nombre) {
+        super();
         this.bandeja = bandeja;
+        this.nombre = nombre;
     }
 
     @Override
     public void run() {
-        for (int i = 1; i <= 12; i++) {
-            try {
-                System.out.println("Cocinero preparando plato " + i);
-                Thread.sleep(5000);
-                bandeja.ponerPlato(i);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                return;
+        System.out.println(this.nombre + " empieza a cocinar.");
+        try {
+            for (int i = 0; i < 12; i++) {
+                Thread.currentThread().sleep(3000);
+                System.out.println(this.nombre+" pone plato");
+                bandeja.pongoPlato("Plato " + (i + 1));
             }
-        }
 
-        System.out.println("El cocinero ha terminado su jornada.");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
